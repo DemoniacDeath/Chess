@@ -2,7 +2,7 @@
 {
     public class Knight : Figure, IFigure
     {
-        public FigureType Type
+        public FigureType type
         { get { return FigureType.Knight; } }
 
         public Knight(bool isWhite) : base(isWhite) { }

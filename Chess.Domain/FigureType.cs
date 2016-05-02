@@ -2,7 +2,6 @@
 {
     public enum FigureType
     {
-        Empty,
         Pawn,
         Knight,
         Bishop,

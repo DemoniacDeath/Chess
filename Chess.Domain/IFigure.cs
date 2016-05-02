@@ -10,6 +10,6 @@ namespace Chess.Domain
     {
         bool isWhite { get; set; }
 
-        FigureType Type { get; }
+        FigureType type { get; }
     }
 }

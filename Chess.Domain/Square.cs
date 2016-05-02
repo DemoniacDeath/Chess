@@ -2,7 +2,7 @@
 {
     public class Square
     {
-        public IFigure Figure { get; private set; }
+        public IFigure figure { get; private set; }
 
         public bool isEmpty;
 
@@ -11,10 +11,10 @@
             isEmpty = true;
         }
 
-        public Square(IFigure figure)
+        public Square(IFigure _figure)
         {
             isEmpty = false;
-            Figure = figure;
+            figure = _figure;
         }
     }
 }

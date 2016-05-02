@@ -2,7 +2,7 @@
 {
     public class Pawn : Figure, IFigure
     {
-        public FigureType Type
+        public FigureType type
         { get { return FigureType.Pawn; } }
 
         public Pawn(bool isWhite) : base(isWhite) { }

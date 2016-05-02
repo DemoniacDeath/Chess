@@ -2,16 +2,16 @@
 {
     public class Board
     {
-        public Square[,] Squares { get; private set; }
+        public Square[,] squares { get; private set; }
 
         public Board()
         {
-            Squares = new Square[8, 8];
-            for (int i = 0; i < Squares.GetLength(0); i++)
+            squares = new Square[8, 8];
+            for (int i = 0; i < squares.GetLength(0); i++)
             {
-                for (int j = 0; j < Squares.GetLength(1); j++)
+                for (int j = 0; j < squares.GetLength(1); j++)
                 {
-                    Squares[i, j] = new Square();
+                    squares[i, j] = new Square();
                 }
             }
         }

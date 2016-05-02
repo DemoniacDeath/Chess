@@ -50,6 +50,7 @@
     <Compile Include="Figure.cs" />
     <Compile Include="Figures\Pawn.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameSerializer.cs" />
     <Compile Include="IFigure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Square.cs" />

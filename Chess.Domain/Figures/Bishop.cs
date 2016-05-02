@@ -2,7 +2,7 @@
 {
     public class Bishop : Figure, IFigure
     {
-        public FigureType Type
+        public FigureType type
         { get { return FigureType.Bishop; } }
 
         public Bishop(bool isWhite) : base(isWhite) { }
