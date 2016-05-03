@@ -27,7 +27,7 @@ namespace Chess.Domain
             var newBoard = new Board();
             foreach (var figure in figures)
             {
-                newBoard.addFigure(figure.Clone(), figure.position.Clone());
+                newBoard.addFigure(figure, figure.position);
             }
             return newBoard;
         }
