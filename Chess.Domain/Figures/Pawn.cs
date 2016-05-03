@@ -1,10 +1,36 @@
-﻿namespace Chess.Domain.Figures
-{
-    public class Pawn : Figure, IFigure
-    {
-        public FigureType type
-        { get { return FigureType.Pawn; } }
+﻿using System.Collections.Generic;
 
-        public Pawn(bool isWhite) : base(isWhite) { }
+namespace Chess.Domain.Figures
+{
+    public class Pawn : Figure
+    {
+        public Pawn(bool isWhite) : base(isWhite)
+        {
+            type = FigureType.Pawn;
+        }
+
+        public override Figure Clone()
+        {
+            var newFigure = new Pawn(isWhite);
+            newFigure.position = new Position(position);
+            return newFigure;
+        }
+
+        public override IList<Position> getAttackZone(IBoardSquares board)
+        {
+            int yOffset = isWhite ? -1 : 1;
+            var attackZone = new List<Position>();
+            if (position.x > 0)
+                attackZone.Add(new Position(position.x - 1, position.y + yOffset));
+            if (position.x < 7)
+                attackZone.Add(new Position(position.x + 1, position.y + yOffset));
+
+            return attackZone;
+        }
+
+        public override IList<Position> getAvailableMovements(IBoardSquares board)
+        {
+            return getAttackZone(board);
+        }
     }
 }

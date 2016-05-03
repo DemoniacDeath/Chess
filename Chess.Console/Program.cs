@@ -28,37 +28,35 @@ namespace Chess.Console
             Game game = new Game();
             game.whitesTurn = false;
 
-            game.board.squares[0, 4] = new Square(new King(false));
-            game.board.squares[0, 3] = new Square(new Queen(false));
-            game.board.squares[0, 1] = new Square(new Rook(false));
-            game.board.squares[0, 7] = new Square(new Rook(false));
-            game.board.squares[0, 5] = new Square(new Bishop(false));
-            game.board.squares[0, 6] = new Square(new Knight(false));
-            game.board.squares[1, 3] = new Square(new Knight(false));
-            game.board.squares[3, 0] = new Square(new Pawn(false));
-            game.board.squares[2, 1] = new Square(new Pawn(false));
-            game.board.squares[3, 2] = new Square(new Pawn(false));
-            game.board.squares[2, 3] = new Square(new Pawn(false));
-            game.board.squares[3, 4] = new Square(new Pawn(false));
-            game.board.squares[2, 5] = new Square(new Pawn(false));
-            game.board.squares[3, 7] = new Square(new Pawn(false));
+            game.board.addFigure(new King(false), new Position(4, 0));
+            game.board.addFigure(new Queen(false), new Position(3, 0));
+            game.board.addFigure(new Rook(false), new Position(1, 0));
+            game.board.addFigure(new Rook(false), new Position(7, 0));
+            game.board.addFigure(new Bishop(false), new Position(5, 0));
+            game.board.addFigure(new Knight(false), new Position(6, 0));
+            game.board.addFigure(new Knight(false), new Position(3, 1));
+            game.board.addFigure(new Pawn(false), new Position(0, 3));
+            game.board.addFigure(new Pawn(false), new Position(1, 2));
+            game.board.addFigure(new Pawn(false), new Position(2, 3));
+            game.board.addFigure(new Pawn(false), new Position(3, 2));
+            game.board.addFigure(new Pawn(false), new Position(4, 3));
+            game.board.addFigure(new Pawn(false), new Position(5, 2));
+            game.board.addFigure(new Pawn(false), new Position(7, 3));
 
-            game.board.squares[7, 6] = new Square(new King(true));
-            game.board.squares[2, 6] = new Square(new Queen(true));
-            game.board.squares[4, 4] = new Square(new Rook(true));
-            game.board.squares[7, 5] = new Square(new Rook(true));
-            game.board.squares[2, 2] = new Square(new Bishop(true));
-            game.board.squares[5, 0] = new Square(new Bishop(true));
-            game.board.squares[3, 3] = new Square(new Knight(true));
-            game.board.squares[6, 0] = new Square(new Pawn(true));
-            game.board.squares[5, 1] = new Square(new Pawn(true));
-            game.board.squares[4, 2] = new Square(new Pawn(true));
-            game.board.squares[5, 3] = new Square(new Pawn(true));
-            game.board.squares[3, 5] = new Square(new Pawn(true));
-            game.board.squares[6, 6] = new Square(new Pawn(true));
-            game.board.squares[6, 7] = new Square(new Pawn(true));
-
-
+            game.board.addFigure(new King(true), new Position(6, 7));
+            game.board.addFigure(new Queen(true), new Position(6, 2));
+            game.board.addFigure(new Rook(true), new Position(4, 4));
+            game.board.addFigure(new Rook(true), new Position(5, 7));
+            game.board.addFigure(new Bishop(true), new Position(2, 2));
+            game.board.addFigure(new Bishop(true), new Position(0, 5));
+            game.board.addFigure(new Knight(true), new Position(3, 3));
+            game.board.addFigure(new Pawn(true), new Position(0, 6));
+            game.board.addFigure(new Pawn(true), new Position(1, 5));
+            game.board.addFigure(new Pawn(true), new Position(2, 4));
+            game.board.addFigure(new Pawn(true), new Position(3, 5));
+            game.board.addFigure(new Pawn(true), new Position(5, 3));
+            game.board.addFigure(new Pawn(true), new Position(6, 6));
+            game.board.addFigure(new Pawn(true), new Position(7, 6));
             return game;
         }
 
@@ -68,26 +66,26 @@ namespace Chess.Console
             game.whitesTurn = true;
             for (int j = 0; j < 8; j++)
             {
-                game.board.squares[1, j] = new Square(new Pawn(false));
-                game.board.squares[6, j] = new Square(new Pawn(true));
+                game.board.addFigure(new Pawn(false), new Position(j, 1));
+                game.board.addFigure(new Pawn(true), new Position(j, 6));
             }
 
-            foreach (int i in new int[] { 0, 7 })
+            foreach (int i in new int[] { 7, 0 })
             {
                 foreach (int j in new int[] { 0, 7 })
                 {
-                    game.board.squares[i, j] = new Square(new Rook(i == 7));
+                    game.board.addFigure(new Rook(i == 7), new Position(j, i));
                 }
                 foreach (int j in new int[] { 1, 6 })
                 {
-                    game.board.squares[i, j] = new Square(new Knight(i == 7));
+                    game.board.addFigure(new Knight(i == 7), new Position(j, i));
                 }
                 foreach (int j in new int[] { 2, 5 })
                 {
-                    game.board.squares[i, j] = new Square(new Bishop(i == 7));
+                    game.board.addFigure(new Bishop(i == 7), new Position(j, i));
                 }
-                game.board.squares[i, 3] = new Square(new Queen(i == 7));
-                game.board.squares[i, 4] = new Square(new King(i == 7));
+                game.board.addFigure(new Queen(i == 7), new Position(3, i));
+                game.board.addFigure(new King(i == 7), new Position(4, i));
             }
             return game;
         }

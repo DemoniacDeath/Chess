@@ -13,25 +13,7 @@
 
         public bool isCheck(bool forWhite)
         {
-            //TODO: move coordinates to figures
-            int kingI = 0, kingJ = 0;
-            bool noKing = true;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    if (!board.squares[i, j].isEmpty && board.squares[i, j].figure.type == FigureType.King && board.squares[i, j].figure.isWhite == forWhite)
-                    {
-                        kingI = i;
-                        kingJ = j;
-                        noKing = false;
-                    }
-                }
-            }
-            if (noKing)
-                throw new System.Exception("No king on board");
-
-            return isSquareUnderAttack(kingI, kingJ, forWhite);
+            return board.isCheck(forWhite);
         }
 
         public bool isCheck()
@@ -43,19 +25,27 @@
         {
             if (!isCheck(forWhite))
                 return false;
-            //TODO: large chunk of work here
+
+            var figures = board.getFiguresByIsWhite(forWhite);
+            foreach (var figure in figures)
+            {
+                var moves = figure.getAvailableMovements(board);
+                foreach (var movePosition in moves)
+                {
+                    var testBoard = board.Clone();
+                    if (!testBoard.moveFigure(testBoard.getFigureByPosition(figure.position), movePosition))
+                        continue;
+                    if (!testBoard.isCheck(forWhite))
+                        return false;
+                }
+            }
+
             return true;
         }
 
         public bool isCheckmate()
         {
             return isCheckmate(whitesTurn);
-        }
-
-        public bool isSquareUnderAttack(int i, int j, bool forWhite)
-        {
-            //TODO: main chunk of work here
-            return forWhite;
         }
     }
 }

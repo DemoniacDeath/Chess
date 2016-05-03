@@ -51,7 +51,8 @@
     <Compile Include="Figures\Pawn.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameSerializer.cs" />
-    <Compile Include="IFigure.cs" />
+    <Compile Include="IBoardSquares.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Square.cs" />
   </ItemGroup>

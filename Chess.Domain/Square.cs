@@ -2,7 +2,7 @@
 {
     public class Square
     {
-        public IFigure figure { get; private set; }
+        public Figure figure { get; set; }
 
         public bool isEmpty;
 
@@ -11,10 +11,19 @@
             isEmpty = true;
         }
 
-        public Square(IFigure _figure)
+        public Square(Figure _figure)
         {
             isEmpty = false;
             figure = _figure;
+        }
+
+        public Square Clone()
+        {
+            var newSquare = new Square();
+            newSquare.isEmpty = isEmpty;
+            if (!newSquare.isEmpty)
+                newSquare.figure = figure.Clone();
+            return newSquare;
         }
     }
 }
