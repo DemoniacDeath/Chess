@@ -33,7 +33,8 @@
                 foreach (var movePosition in moves)
                 {
                     var testBoard = board.Clone();
-                    if (!testBoard.moveFigure(testBoard.getFigureByPosition(figure.position), movePosition))
+                    var testFigure = testBoard.getFigureByPosition(figure.position);
+                    if (!testBoard.moveFigure(testFigure, movePosition))
                         continue;
                     if (!testBoard.isCheck(forWhite))
                         return false;

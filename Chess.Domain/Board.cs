@@ -27,7 +27,7 @@ namespace Chess.Domain
             var newBoard = new Board();
             foreach (var figure in figures)
             {
-                newBoard.addFigure(figure, figure.position);
+                newBoard.addFigure(figure.Clone(), figure.position);
             }
             return newBoard;
         }
@@ -74,10 +74,12 @@ namespace Chess.Domain
                     return false;
                 if (attackedFigure.type == FigureType.King)
                     return false;
+                figures.Remove(attackedFigure);
             }
             figure.position = position;
             getSquareByPosition(position).figure = figure;
             getSquareByPosition(position).isEmpty = false;
+
 
             return true;
         }

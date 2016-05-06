@@ -13,12 +13,17 @@ namespace Chess.Console
 
             var game = initializeTestGame();
 
-            printBoard(game.board);
 
             if (game.isCheckmate())
                 System.Console.WriteLine("Checkmate!");
             else if (game.isCheck())
                 System.Console.WriteLine("Check");
+            else if (game.whitesTurn)
+                System.Console.WriteLine("White's turn");
+            else
+                System.Console.WriteLine("Black's turn");
+
+            printBoard(game.board);
 
             System.Console.ReadKey(true);
         }

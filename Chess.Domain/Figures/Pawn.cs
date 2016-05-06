@@ -27,10 +27,5 @@ namespace Chess.Domain.Figures
 
             return attackZone;
         }
-
-        public override IList<Position> getAvailableMovements(IBoardSquares board)
-        {
-            return getAttackZone(board);
-        }
     }
 }
